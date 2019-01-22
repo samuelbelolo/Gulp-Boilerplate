@@ -77,6 +77,7 @@ const js = () => {
           presets: ['@babel/env']
         }))
         .pipe(minifyJS())
+        // Uncomment the next line if you want to merge all your JS file into one that will be global.min.js
         // .pipe(concat('global.min.js'))
       .pipe(sourceMaps.write('../sourcemaps'))
       .pipe(gulp.dest(destination + '/js/'))
@@ -92,8 +93,8 @@ const img = () => {
 // HTML
 const html = () => {
   return gulp.src(source + '/**/*.html')
+    // Turn collapseWhitespace to false in order to not minimify the HTML
     .pipe(htmlmin({ collapseWhitespace: true }))
-    .pipe(htmlmin())
     .pipe(gulp.dest(destination))
 }
 
@@ -102,11 +103,13 @@ const server = () => {
   return gulp.src(destination)
     .pipe(webServer({
       fallback: 'index.html',
+      // Turn livereload to false if you don't want that your browser auto reload on change
       livereload: true,
       directoryListing: {
         enable : true,
         path : destination
       },
+      // Change open to false if you want to disable the opening of the browser
       open: true
     }))
 }
@@ -140,6 +143,6 @@ exports.server = server
 exports.static = static
 exports.watch = watch
 exports.dev = gulp.parallel(server,watch)
-exports.build = gulp.parallel(sass,minify,js,img,html,css,static)
+exports.build = gulp.parallel(sass,js,img,html,css,static,minify)
 
   
