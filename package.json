@@ -1,5 +1,5 @@
 {
-  "name": "Gulp Boiler Plate",
+  "name": "gulp-boiler-plate",
   "version": "1.0.0",
   "description": "A simple gulp Template",
   "main": "gulpfile.js",
@@ -7,7 +7,14 @@
     "build" : "gulp build",
     "dev" : "gulp dev",
     "server" : "gulp server",
-    "watch" : "gulp watch"
+    "watch" : "gulp watch",
+    "js" : "gulp js",
+    "html" : "gulp html",
+    "img" : "gulp img",
+    "sass" : "gulp sass",
+    "minify" : "gulp minify",
+    "static" : "gulp static",
+    "css" : "gulp css"
   },
   "author": "Samuel Belolo",
   "license": "MIT",
@@ -28,5 +35,9 @@
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-webserver": "^0.9.1"
+  },
+  "repository" :{
+    "type": "git",
+    "url": "https://github.com/samuelbelolo/Gulp-Boilerplate"
   }
 }
