@@ -4,17 +4,17 @@
   "description": "A simple gulp Template",
   "main": "gulpfile.js",
   "scripts": {
-    "build" : "gulp build",
-    "dev" : "gulp dev",
-    "server" : "gulp server",
-    "watch" : "gulp watch",
-    "js" : "gulp js",
-    "html" : "gulp html",
-    "img" : "gulp img",
-    "sass" : "gulp sass",
-    "minify" : "gulp minify",
-    "static" : "gulp static",
-    "css" : "gulp css"
+    "build": "gulp build",
+    "dev": "gulp dev",
+    "server": "gulp server",
+    "watch": "gulp watch",
+    "js": "gulp js",
+    "html": "gulp html",
+    "img": "gulp img",
+    "sass": "gulp sass",
+    "minify": "gulp minify",
+    "static": "gulp static",
+    "css": "gulp css"
   },
   "author": "Samuel Belolo",
   "license": "MIT",
@@ -36,7 +36,7 @@
     "gulp-sourcemaps": "^2.6.4",
     "gulp-webserver": "^0.9.1"
   },
-  "repository" :{
+  "repository": {
     "type": "git",
     "url": "https://github.com/samuelbelolo/Gulp-Boilerplate"
   }
