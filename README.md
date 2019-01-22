@@ -1,5 +1,4 @@
 #Gulp 4 Boilerplate
-
 A simple Gulp 4 Template
 
 ## Plugins
@@ -21,7 +20,6 @@ A simple Gulp 4 Template
 
 ```
 npm install
-
 ```
 
 It will install all the dependencies that gulp will need.
