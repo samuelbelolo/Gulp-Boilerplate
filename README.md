@@ -28,7 +28,6 @@ It will install all the dependencies that gulp will need.
 ## Usage 
 
 ### From gulp
-In order to use gulp you simply need to use gulp + the name of the task you want to use.
 
 Tasks Available :
 
@@ -70,8 +69,31 @@ options : You can disable the JS minification or you can merge all the JS file i
 
 Use dev when you want to code, and build when you want to receive the final folder to put it in your server.
 
+### Run from npm 
+
+If you want to use the gulp task with the npm command line : 
+
+Just run npm **run + ' the name of the task you want '**
+
+
+```
+npm run build
+npm run dev
+npm run watch
+npm run server
+...
+```
+
+### Run from gulp
+
+If you want to run directly from gulp you need first to install globally gulp & gulp-cli : 
+
+```
+sudo npm i -g gulp gulp-cli
+```
+
+Then you can run as follow : 
  
-#### Exemples : 
 ```
 gulp build
 gulp dev
@@ -82,17 +104,7 @@ gulp server
 
 
 
-### From npm 
-If you want to use the gulp task with the npm command line : 
 
-
-```
-npm run build
-npm run dev
-npm run watch
-npm run server
-...
-```
 
 
 
