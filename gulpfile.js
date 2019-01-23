@@ -143,6 +143,6 @@ exports.server = server
 exports.static = static
 exports.watch = watch
 exports.dev = gulp.parallel(server,watch)
-exports.build = gulp.parallel(sass,js,img,html,css,static,minify)
+exports.build = gulp.series(sass,css,minify,js,img,html,static)
 
   
