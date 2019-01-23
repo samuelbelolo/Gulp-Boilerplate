@@ -7,6 +7,9 @@
 # Icon must end with two \r
 Icon
 
+# DIST Folder
+/dist/
+
 # Thumbnails
 ._*
 
