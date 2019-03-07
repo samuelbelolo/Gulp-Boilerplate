@@ -54,7 +54,11 @@ const sass = () => {
     .pipe(cssbeautify({indent: '  '}))
     .pipe(gulp.dest(destination + '/css/'))
 }
-
+// PHP
+const php = () => {
+  return gulp.src(source + '/**/*.php')
+    .pipe(gulp.dest(destination))
+}
 // Copy CSS File
 const css = () => {
   return gulp.src(source + '/css/**/*.css')
@@ -124,6 +128,7 @@ const static = () => {
 const watch = () => {
   gulp.watch(source + '/scss/**/*.scss', sass)
   gulp.watch(source + '/css/**/*.css', css)
+  gulp.watch(source + '/**/*.php', php)
   gulp.watch(source + '/**/*.html', html)
   gulp.watch(source + '/js/**/*.js', js)
 }
@@ -133,6 +138,7 @@ const watch = () => {
 * Exports
 */
 
+exports.php = php
 exports.sass = sass
 exports.css = css
 exports.minify = minify
@@ -143,6 +149,6 @@ exports.server = server
 exports.static = static
 exports.watch = watch
 exports.dev = gulp.parallel(server,watch)
-exports.build = gulp.series(sass,css,minify,js,img,html,static)
+exports.build = gulp.series(sass,php,js,img,html,css,static,minify)
 
   
