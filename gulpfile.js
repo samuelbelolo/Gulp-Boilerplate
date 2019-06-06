@@ -24,19 +24,6 @@ const babel = require('gulp-babel')
 * Config 
 */
 
-// Browser Array For Autoprefixing
-const AUTOPREFIXER_BROWSERS = [
-  'ie >= 10',
-  'ie_mob >= 10',
-  'ff >= 30',
-  'chrome >= 34',
-  'safari >= 7',
-  'opera >= 23',
-  'ios >= 7',
-  'android >= 4.4',
-  'bb >= 10'
-]
-
 // Path Variables
 const source = './src'
 const destination = './dist'
@@ -48,7 +35,7 @@ const destination = './dist'
 // SCSS
 const sass = () => {
   return gulp.src(source + '/scss/**/*.scss')
-    .pipe(autoprefixer({browsers: AUTOPREFIXER_BROWSERS}))
+    .pipe(autoprefixer())
     .pipe(sassGulp())
     .pipe(csscomb())
     .pipe(cssbeautify({indent: '  '}))
