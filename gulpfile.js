@@ -16,7 +16,6 @@ const minifyJS = require('gulp-babel-minify')
 const concat = require('gulp-concat')
 const image = require('gulp-imagemin')
 const htmlmin = require('gulp-htmlmin')
-const webServer = require('gulp-webserver')
 const sourceMaps = require('gulp-sourcemaps')
 const babel = require('gulp-babel')
 
@@ -89,22 +88,6 @@ const html = () => {
     .pipe(gulp.dest(destination))
 }
 
-// Server
-const server = () => {
-  return gulp.src(destination)
-    .pipe(webServer({
-      fallback: 'index.html',
-      // Turn livereload to false if you don't want that your browser auto reload on change
-      livereload: true,
-      directoryListing: {
-        enable : true,
-        path : destination
-      },
-      // Change open to false if you want to disable the opening of the browser
-      open: true
-    }))
-}
-
 // Copy File from Static Folder
 const static = () => {
   return gulp.src([source + '/static/**/.*', source + '/static/**/*'])
@@ -132,7 +115,6 @@ exports.minify = minify
 exports.js = js
 exports.img = img
 exports.html = html
-exports.server = server
 exports.static = static
 exports.watch = watch
 exports.dev = gulp.parallel(server,watch)
