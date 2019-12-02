@@ -117,7 +117,6 @@ exports.img = img
 exports.html = html
 exports.static = static
 exports.watch = watch
-exports.dev = gulp.parallel(server,watch)
 exports.build = gulp.series(sass,php,js,img,html,css,static,minify)
 
   
