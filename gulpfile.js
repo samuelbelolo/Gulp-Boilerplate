@@ -18,7 +18,11 @@ const image = require('gulp-imagemin')
 const htmlmin = require('gulp-htmlmin')
 const sourceMaps = require('gulp-sourcemaps')
 const babel = require('gulp-babel')
+const hash = require('gulp-hash-filename')
+const cacheBuster = require('gulp-cachebust')
+const del = require('del');
 
+const cachebust = new cacheBuster()
 /*
 * Config 
 */
@@ -38,23 +42,25 @@ const sass = () => {
     .pipe(sassGulp())
     .pipe(csscomb())
     .pipe(cssbeautify({indent: '  '}))
+    .pipe(cachebust.resources())
     .pipe(gulp.dest(destination + '/css/'))
 }
 // PHP
 const php = () => {
   return gulp.src(source + '/**/*.php')
+    .pipe(cachebust.references())
     .pipe(gulp.dest(destination))
 }
 // Copy CSS File
 const css = () => {
   return gulp.src(source + '/css/**/*.css')
+    .pipe(cachebust.resources())
     .pipe(gulp.dest(destination + '/css/'))
 }
 
 // Minify CSS
 const minify = () => {
   return gulp.src(destination + '/css/**/*.css')
-    .pipe(rename({suffix:'.min'}))
     .pipe(csso())
     .pipe(gulp.dest(destination + '/css/'))
 }
@@ -69,7 +75,8 @@ const js = () => {
         .pipe(minifyJS())
         // Uncomment the next line if you want to merge all your JS file into one that will be global.min.js
         // .pipe(concat('global.min.js'))
-      .pipe(sourceMaps.write('../sourcemaps'))
+      .pipe(sourceMaps.write())
+      .pipe(cachebust.resources())
       .pipe(gulp.dest(destination + '/js/'))
 }
 
@@ -77,6 +84,7 @@ const js = () => {
 const img = () => {
   return gulp.src(source + '/img/**/*.{png,jpg,jpeg,gif,svg}')
     .pipe(image())
+    .pipe(cachebust.resources())
     .pipe(gulp.dest(destination + '/img'))
 }
 
@@ -85,6 +93,7 @@ const html = () => {
   return gulp.src(source + '/**/*.html')
     // Turn collapseWhitespace to false in order to not minimify the HTML
     .pipe(htmlmin({ collapseWhitespace: true }))
+    .pipe(cachebust.references())
     .pipe(gulp.dest(destination))
 }
 
@@ -94,6 +103,13 @@ const static = () => {
     .pipe(gulp.dest(destination + '/static'))
 }
 
+// Clean function
+
+const clean = () => {
+  return del([
+    'dist/**/*',
+  ]);
+}
 // Watch File 
 const watch = () => {
   gulp.watch(source + '/scss/**/*.scss', sass)
@@ -108,6 +124,7 @@ const watch = () => {
 * Exports
 */
 
+exports.clean = clean
 exports.php = php
 exports.sass = sass
 exports.css = css
@@ -117,6 +134,6 @@ exports.img = img
 exports.html = html
 exports.static = static
 exports.watch = watch
-exports.build = gulp.series(sass,php,js,img,html,css,static,minify)
+exports.build = gulp.series(clean,sass,css,php,js,img,html,static,minify)
 
   
