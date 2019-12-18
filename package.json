@@ -31,10 +31,8 @@
     "gulp-cssbeautify": "^1.0.1",
     "gulp-csscomb": "^3.1.0",
     "gulp-csso": "^3.0.1",
-    "gulp-hash-filename": "^2.0.1",
     "gulp-htmlmin": "^5.0.1",
     "gulp-imagemin": "^5.0.3",
-    "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.4"
   },
